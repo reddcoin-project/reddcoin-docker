@@ -22,3 +22,4 @@ RUN chown -R root:root /root/reddcoin
 RUN ./autogen.sh && ./configure --without-gui
 
 RUN make
+RUN make install

@@ -23,8 +23,8 @@ docker-compose up -d reddcoin-server
 
 ## Docker Images
 
-* shroomlife/reddcoin-docker:server
+* shroomlife/reddcoin-docker:server (Reddcoin Wallet & Server)
+* shroomlife/reddcoin-docker:builder (Compiler & Binary Builder)
 
 ### WIP
-* shroomlife/reddcoin-docker:dnsseed (DNS Seed)
-* shroomlife/reddcoin-docker:builder (Compiler & Binary Builder)
+* shroomlife/reddcoin-docker:dnsseed (DNS Seeder)
