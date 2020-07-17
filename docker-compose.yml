@@ -10,6 +10,7 @@ services:
     volumes: 
       - "./data:/root/.reddcoin"
     environment: 
+      - RPC_SERVER=1
       - RPC_USERNAME=username
       - RPC_PASSWORD=password
       - RPC_PORT=45443
@@ -22,11 +23,11 @@ services:
       context: .
       dockerfile: ./build/builder/Dockerfile
 
-#  reddcoin-dnsseed:
-#    container_name: reddcoin-dnsseed
-#    image: shroomlife/reddcoin-docker:dnsseed
-#    build:
-#      context: .
-#      dockerfile: ./build/dnsseed/Dockerfile
-#    ports:
-#     - 53:53/udp
+  reddcoin-dnsseed:
+    container_name: reddcoin-dnsseed
+    image: shroomlife/reddcoin-docker:dnsseed
+    build:
+      context: .
+      dockerfile: ./build/dnsseed/Dockerfile
+    ports:
+     - 53:53/udp
