@@ -1,0 +1,30 @@
+version: "3.6"
+services:
+  reddcoin-server:
+    container_name: reddcoin-server
+    image: shroomlife/reddcoin-docker:server
+    build: ./build/server
+    ports: 
+      - "45443:45443"
+    volumes: 
+      - "./data:/root/.reddcoin"
+    environment: 
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=45443
+      - RPC_ALLOW_IP=0.0.0.0/0.0.0.0
+
+#  reddcoin-dnsseed:
+#    container_name: reddcoin-dnsseed
+#    image: shroomlife/reddcoin-docker:dnsseed
+#    build:
+#      context: .
+#      dockerfile: ./build/dnsseed/Dockerfile
+#    ports:
+#     - 53:53/udp
+#  reddcoin-builder:
+#    container_name: reddcoin-builder
+#    image: shroomlife/reddcoin-docker:builder
+#    build:
+#      context: .
+#      dockerfile: ./build/builder/Dockerfile
