@@ -16,7 +16,7 @@ jobs:
       with:
         ref: master
     - name: Build Docker Image
-      run: docker build . --tag reddcoincore/server:latest
+      run: docker build ./server --tag reddcoincore/server:latest
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
     - name: Push Docker Image
@@ -31,7 +31,7 @@ jobs:
       with:
         ref: master
     - name: Build Docker Image
-      run: docker build . --tag reddcoincore/compiler:latest
+      run: docker build ./compiler --tag reddcoincore/compiler:latest
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
     - name: Push Docker Image
@@ -46,7 +46,7 @@ jobs:
       with:
         ref: master
     - name: Build Docker Image
-      run: docker build . --tag reddcoincore/seeder:latest
+      run: docker build ./seeder --tag reddcoincore/seeder:latest
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
     - name: Push Docker Image
