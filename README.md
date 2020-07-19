@@ -10,7 +10,7 @@ Install Docker: https://docs.docker.com/get-started/
 ## Running Docker Container
 
 ```
-docker run --name reddcoin-server --expose 45443 shroomlife/reddcoin-docker:server
+docker run --name reddcoin-server --expose 45443 reddcoincore/server:latest
 ```
 
 ## Using Docker Compose
@@ -23,8 +23,6 @@ docker-compose up -d reddcoin-server
 
 ## Docker Images
 
-* shroomlife/reddcoin-docker:server (Reddcoin Wallet & Server)
-* shroomlife/reddcoin-docker:builder (Compiler & Binary Builder)
-
-### WIP
-* shroomlife/reddcoin-docker:dnsseed (DNS Seeder)
+* reddcoincore/server:latest (Reddcoin Wallet Server)
+* reddcoincore/compiler:latest (Compiler & Binary Builder)
+* reddcoincore/seeder:latest (DNS Seeder)
