@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-LABEL maintainer="robin@shroomlife.de"
+LABEL maintainer="info@reddcoin.com"
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /root
