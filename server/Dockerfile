@@ -14,7 +14,9 @@ ENV RPC_SERVER 1
 ENV RPC_USERNAME rpcusername
 ENV RPC_PASSWORD rpcpassword
 ENV RPC_PORT 45443
-ENV RPC_ALLOW_IP 0.0.0.0/0.0.0.0
+ENV RPC_ALLOW_IP 0.0.0.0/0
 
 COPY ./setup.sh .
+RUN chmod u+x /root/setup.sh
+
 CMD [ "/root/setup.sh" ]
