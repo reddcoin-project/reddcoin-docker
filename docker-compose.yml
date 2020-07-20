@@ -1,0 +1,33 @@
+version: "3.6"
+services:
+
+  reddcoin-server:
+    container_name: reddcoin-server
+    image: reddcoincore/server:latest
+    build: ./server
+    ports: 
+      - "45443:45443"
+    volumes: 
+      - "./.reddcoin:/root/.reddcoin"
+    environment: 
+      - RPC_SERVER=1
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=45443
+      - RPC_ALLOW_IP=0.0.0.0/0.0.0.0
+
+  reddcoin-compiler:
+    container_name: reddcoin-compiler
+    image: reddcoincore/compiler:latest
+    build:
+      context: .
+      dockerfile: ./compiler/Dockerfile
+
+  reddcoin-seeder:
+    container_name: reddcoin-seeder
+    image: reddcoincore/seeder:latest
+    build:
+      context: .
+      dockerfile: ./seeder/Dockerfile
+    ports:
+     - 53:53/udp
