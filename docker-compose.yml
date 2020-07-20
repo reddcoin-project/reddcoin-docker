@@ -14,7 +14,7 @@ services:
       - RPC_USERNAME=username
       - RPC_PASSWORD=password
       - RPC_PORT=45443
-      - RPC_ALLOW_IP=0.0.0.0/0.0.0.0
+      - RPC_ALLOW_IP=0.0.0.0/0
 
   reddcoin-compiler:
     container_name: reddcoin-compiler
