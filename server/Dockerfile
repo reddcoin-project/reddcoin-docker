@@ -17,4 +17,6 @@ ENV RPC_PORT 45443
 ENV RPC_ALLOW_IP 0.0.0.0/0.0.0.0
 
 COPY ./setup.sh .
+RUN chmod u+x /root/setup.sh
+
 CMD [ "/root/setup.sh" ]
