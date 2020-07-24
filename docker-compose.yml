@@ -7,9 +7,12 @@ services:
     build: ./server
     ports: 
       - "45443:45443"
-    volumes: 
-      - "./.reddcoin:/root/.reddcoin"
-    environment: 
+# Use custom volume for data
+#    volumes:
+#      - "./.reddcoin:/root/.reddcoin"
+# Inject Bootstrap for faster Startup
+#      - "./bootstrap:/root/bootstrap"
+    environment:
       - RPC_SERVER=1
       - RPC_USERNAME=username
       - RPC_PASSWORD=password
