@@ -8,10 +8,6 @@ echo "rpcport=$RPC_PORT" >> $CONFIG_PATH
 echo "rpcallowip=$RPC_ALLOW_IP" >> $CONFIG_PATH
 echo "printtoconsole=1" >> $CONFIG_PATH
 
-if [ ! -d "/root/.reddcoin" ]; then
-  mkdir /root/.reddcoin
-fi
-
 if [ -f "/root/bootstrap/bootstrap050120.zip" ]; then
   if [ -d "/root/.reddcoin/blocks" ]; then
     echo "Skipping Bootstrap file cause of already existent blocks in /root/.reddcoin"
