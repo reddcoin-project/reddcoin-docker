@@ -16,4 +16,9 @@ RUN chmod u+x /usr/reddcoin-seeder/setup.sh
 
 EXPOSE 53/udp
 
+# Cleanup Build Packages
+RUN apt-get remove -y \
+  build-essential libboost-all-dev libssl-dev
+RUN apt-get autoremove -y
+
 CMD [ "/usr/reddcoin-seeder/setup.sh" ]
