@@ -9,5 +9,11 @@ RUN cd /usr && git clone https://github.com/shroomlife/reddcoin-seeder.git
 WORKDIR /usr/reddcoin-seeder
 
 RUN make
+RUN mv /usr/reddcoin-seeder/dnsseed /usr/local/bin
+
+COPY ./setup.sh .
+RUN chmod u+x /usr/reddcoin-seeder/setup.sh
 
 EXPOSE 53/udp
+
+CMD [ "/usr/reddcoin-seeder/setup.sh" ]
