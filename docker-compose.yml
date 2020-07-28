@@ -19,7 +19,6 @@ services:
       - RPC_PASSWORD=password
       - RPC_PORT=45443
       - RPC_ALLOW_IP1=0.0.0.0/0
-      - RPC_ALLOW_IP2=172.17.0.0/16
 
   reddcoin-compiler:
     container_name: reddcoin-compiler
@@ -36,6 +35,4 @@ services:
       dockerfile: ./seeder/Dockerfile
     ports:
      - 53:53/udp
-    environment:
-     - HOSTNAME=seed.wilbor.com
-     - IPADDRESS=1.2.3.4
+
