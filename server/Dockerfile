@@ -19,4 +19,6 @@ ENV RPC_ALLOW_IP 0.0.0.0/0
 COPY ./setup.sh .
 RUN chmod u+x /root/setup.sh
 
+EXPOSE 45443 45444
+
 CMD [ "/root/setup.sh" ]
