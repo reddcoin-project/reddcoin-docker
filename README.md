@@ -15,7 +15,7 @@ docker run --name reddcoin-server --expose 45443 reddcoincore/server:latest
 
 ## Using Docker Compose
 
-You need to habe Docker Compose installed. Get it here: https://docs.docker.com/compose/install/
+You need to have Docker Compose installed. Get it here: https://docs.docker.com/compose/install/
 
 ```
 docker-compose up -d reddcoin-server
