@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y git build-essential libboost-all-dev li
 WORKDIR /root
 
 # TODO: Change to official Reddcoin repository
-RUN git clone https://github.com/shroomlife/reddcoin-seeder.git
+RUN git clone https://github.com/reddcoin-project/reddcoin-seeder.git
 
 RUN cd ./reddcoin-seeder && make
 RUN mv ./reddcoin-seeder/dnsseed /usr/local/bin
