@@ -35,3 +35,4 @@ services:
       dockerfile: ./seeder/Dockerfile
     ports:
      - 53:53/udp
+

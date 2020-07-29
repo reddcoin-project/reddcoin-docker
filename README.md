@@ -15,7 +15,7 @@ docker run --name reddcoin-server --expose 45443 reddcoincore/server:latest
 
 ## Using Docker Compose
 
-You need to habe Docker Compose installed. Get it here: https://docs.docker.com/compose/install/
+You need to have Docker Compose installed. Get it here: https://docs.docker.com/compose/install/
 
 ```
 docker-compose up -d reddcoin-server
@@ -57,3 +57,9 @@ The bootstrap file needs to be located at `/root/bootstrap/bootstrap050120.zip` 
 * [reddcoincore/server:latest](https://hub.docker.com/repository/docker/reddcoincore/server) (Reddcoin Wallet Server)
 * [reddcoincore/compiler:latest](https://hub.docker.com/repository/docker/reddcoincore/compiler) (Compiler & Binary Builder)
 * [reddcoincore/seeder:latest](https://hub.docker.com/repository/docker/reddcoincore/seeder) (DNS Seeder)
+
+## Testing DNS seed node
+```commandline
+nslookup dnsseed01.redd.ink
+```
+With everything configured the query should return a list of IP addresses associated with the hostname
