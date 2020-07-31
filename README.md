@@ -1,4 +1,4 @@
-# ReddCoin Docker Environment
+# ReddCoin Docker Environment ![all](https://github.com/reddcoin-project/reddcoin-docker/workflows/all/badge.svg)
 Dockerized packages of Reddcore Core, DNS-Seed and other easy-to-implement Reddcoin infrastructure components.
 
 # Prerequisites
