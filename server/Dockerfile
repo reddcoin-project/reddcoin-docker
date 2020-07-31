@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /root
 
-ENV REDDCOIN_VERSION "3.10.1"
+ENV REDDCOIN_VERSION "3.10.2"
 
 COPY ./bin/reddcoin-${REDDCOIN_VERSION} /usr/local/bin
 RUN mkdir -p /root/.reddcoin
