@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+
+  reddcoin-server:
+    container_name: reddcoin-server
+    image: reddcoincore/server:3.10.2
+    restart: always
+    volumes:
+    - /root/.reddcoin/:/root/.reddcoin/
+    networks:
+     net1:
+       aliases:
+        - alias2
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=AjtnM8WGoyeS6X96wwNYgBFYiNUmBk2sgPoQDsSji229
+      - RPC_PORT=45443
+      - RPC_ALLOW_IP=127.0.0.1/0
+
+  reddcoin-seeder:
+    container_name: reddcoin-seeder
+    image: reddcoincore/seeder:latest
+    restart: always
+    networks:
+     net1:
+       aliases:
+        - dnsseed
+    volumes:
+    - /root/.reddcoin/:/root/.reddcoin/
+    ports:
+     - 0.0.0.0:53:53/udp
+    links:
+      - reddcoin-server
+    environment:
+      - HOSTNAME=dnsseed02.redd.ink
+      - IPADDRESS=159.89.200.66
+
+networks:
+  net1:
