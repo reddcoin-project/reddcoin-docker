@@ -12,15 +12,15 @@ RUN cd ./reddcoin-seeder && make
 RUN mv ./reddcoin-seeder/dnsseed /usr/local/bin
 RUN rm -rf reddcoin-seeder
 
-COPY ./setup.sh .
-RUN chmod u+x setup.sh
-
-EXPOSE 53
-EXPOSE 53/udp
-
 # Cleanup Build Packages
 RUN apt-get remove -y \
   build-essential libboost-all-dev libssl-dev
 RUN apt-get autoremove -y
 
-CMD [ "setup.sh" ]
+COPY ./setup.sh /usr/local/bin/startReddSeeder
+RUN chmod u+x /usr/local/bin/startReddSeeder
+
+EXPOSE 53
+EXPOSE 53/udp
+
+CMD [ "/usr/local/bin/startReddSeeder" ]
