@@ -3,7 +3,7 @@ LABEL maintainer="info@reddcoin.com"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y git build-essential libboost-all-dev libssl-dev
-WORKDIR /root
+WORKDIR /src
 
 # TODO: Change to official Reddcoin repository
 RUN git clone https://github.com/reddcoin-project/reddcoin-seeder.git
@@ -13,8 +13,9 @@ RUN mv ./reddcoin-seeder/dnsseed /usr/local/bin
 RUN rm -rf reddcoin-seeder
 
 COPY ./setup.sh .
-RUN chmod u+x /root/setup.sh
+RUN chmod u+x setup.sh
 
+EXPOSE 53
 EXPOSE 53/udp
 
 # Cleanup Build Packages
@@ -22,4 +23,4 @@ RUN apt-get remove -y \
   build-essential libboost-all-dev libssl-dev
 RUN apt-get autoremove -y
 
-CMD [ "/root/setup.sh" ]
+CMD [ "setup.sh" ]
