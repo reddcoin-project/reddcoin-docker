@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:stretch-slim
 LABEL maintainer="info@reddcoin.com"
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -17,10 +17,8 @@ RUN apt-get remove -y \
   build-essential libboost-all-dev libssl-dev
 RUN apt-get autoremove -y
 
-COPY ./setup.sh /usr/local/bin/startReddSeeder
-RUN chmod u+x /usr/local/bin/startReddSeeder
-
-EXPOSE 53
 EXPOSE 53/udp
 
-CMD [ "/usr/local/bin/startReddSeeder" ]
+CMD [ "dnsseed" ]
+
+# example configured command: dnsseed -h $HOSTNAME -n $IPADDRESS -p 53
