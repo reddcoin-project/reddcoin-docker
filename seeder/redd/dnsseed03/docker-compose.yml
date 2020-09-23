@@ -1,16 +1,11 @@
-version: '3.3'
+version: "3.3"
 services:
-
   reddcoin-server:
     container_name: reddcoin-server
     image: reddcoincore/server:3.10.2
     restart: always
     volumes:
-    - /root/.reddcoin/:/root/.reddcoin/
-    networks:
-     net1:
-       aliases:
-        - alias2
+      - /root/.reddcoin:/root/.reddcoin
     environment:
       - RPC_SERVER=1
       - RPC_USERNAME=reddrpc
@@ -20,21 +15,12 @@ services:
 
   reddcoin-seeder:
     container_name: reddcoin-seeder
-    image: reddcoincore/seeder:latest
+    image: reddcoincore/seeder:2020-09-23
+    command: dnsseed -h dnsseed03.redd.ink -n 37.139.16.57 -p 53
     restart: always
-    networks:
-     net1:
-       aliases:
-        - dnsseed
     volumes:
-    - /root/.reddcoin/:/root/.reddcoin/
+      - /root/dnsseed:/src
     ports:
-     - 0.0.0.0:53:53/udp
+      - 0.0.0.0:53:53/udp
     links:
       - reddcoin-server
-    environment:
-      - HOSTNAME=dnsseed03.redd.ink
-      - IPADDRESS=37.139.16.57
-
-networks:
-  net1:
