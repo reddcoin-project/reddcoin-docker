@@ -48,7 +48,7 @@ services:
 
 For a speeded up setup and faster starting of your staking you can use the ReddCoin bootstrap files. Just have a look inside the `docker-compose.yml` file for a better understanding.
 
-The bootstrap file needs to be located at `/root/bootstrap/bootstrap050120.zip` inside the docker container. Take care of the naming!
+The bootstrap file needs to be located at `/root/bootstrap/bootstrap.zip` inside the docker container. Take care of the naming!
 
 [Download Bootstrap Files Here](https://github.com/reddcoin-project/bootstrap_files)
 
