@@ -12,6 +12,8 @@ services:
       - RPC_PASSWORD=7vWAWLDK4ioT3MHX8Gym8Bc5uj6T4aa1kY7KYaTFgcJy
       - RPC_PORT=45443
       - RPC_ALLOW_IP=127.0.0.1/0
+    ports:
+      - 45444:45444
 
   reddcoin-seeder:
     container_name: reddcoin-seeder
