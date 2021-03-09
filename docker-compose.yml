@@ -61,3 +61,18 @@ services:
     volumes:
       - "./SocialTipBot:/root/SocialTipBot"
       - "./.reddcoin:/root/.reddcoin"
+
+  reddcoin-reddtipbot:
+    container_name: reddcoin-reddittipbot
+    image: reddcoin-reddittipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/reddit/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "./RedditTipBot:/root/RedditTipBot"
+      - "./.reddcoin:/root/.reddcoin"
