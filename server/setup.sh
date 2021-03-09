@@ -12,13 +12,13 @@ else
   echo "$CONFIG_PATH is already existent..."
 fi
 
-if [ -f "/root/bootstrap/bootstrap050120.zip" ]; then
+if [ -f "/root/bootstrap/blockchain-Nov-26-2020.zip" ]; then
   if [ -d "/root/.reddcoin/blocks" ]; then
     echo "Skipping Bootstrap file cause of already existent blocks in /root/.reddcoin"
   else
     cd /root/.reddcoin && rm -rf blocks chainstate database
     apt-get update && apt-get install -y unzip
-    unzip /root/bootstrap/bootstrap050120.zip -d /root/.reddcoin
+    unzip /root/bootstrap/blockchain-Nov-26-2020.zip -d /root/.reddcoin
   fi
 fi
 
