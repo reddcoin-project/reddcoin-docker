@@ -47,3 +47,17 @@ services:
     volumes:
       - "./dbdata:/var/lib/mysql/"
 
+  reddcoin-twittertipbot:
+    container_name: reddcoin-twittertipbot
+    image: reddcoin-twittertipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/twitter/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "./SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
