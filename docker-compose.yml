@@ -62,7 +62,7 @@ services:
       - "./SocialTipBot:/root/SocialTipBot"
       - "./.reddcoin:/root/.reddcoin"
 
-  reddcoin-reddtipbot:
+  reddcoin-reddittipbot:
     container_name: reddcoin-reddittipbot
     image: reddcoin-reddittipbot
     restart: always
