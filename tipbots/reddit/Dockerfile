@@ -24,16 +24,16 @@ RUN apt -y update -qq \
     && apt -y clean
 
 RUN pip3 install \
-    dateutils==0.6.7 \
+    dateutils==2.8.1 \
     irc==18.0.0 \
     mysqlclient==1.4.6 \
-    praw==6.5.1 \
+    praw==7.2.0 \
     PyYAML==5.3 \
     SQLAlchemy==1.3.12
 
 # RUN git clone https://github.com/reddcoin-project/SocialTipBot
 
-WORKDIR /root/RedditTipBot/src
+WORKDIR /root/SocialTipBot/src
 
 EXPOSE 3000 3000
 
