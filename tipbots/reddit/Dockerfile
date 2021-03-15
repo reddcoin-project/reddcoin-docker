@@ -24,7 +24,7 @@ RUN apt -y update -qq \
     && apt -y clean
 
 RUN pip3 install \
-    dateutils==2.8.1 \
+    dateutils==0.6.7 \
     irc==18.0.0 \
     mysqlclient==1.4.6 \
     praw==7.2.0 \
