@@ -27,19 +27,18 @@ RUN pip3 install \
     dateutils==0.6.7 \
     irc==18.0.0 \
     mysqlclient==1.4.6 \
-    praw==6.5.1 \
+    praw==7.2.0 \
     PyYAML==5.3 \
+    Jinja2==2.10.3
     SQLAlchemy==1.3.12
 
 RUN pip3 install https://github.com/reddcoin-project/python-twitter-webhooks/archive/master.zip
-
 RUN pip3 install https://github.com/ryanmcgrath/twython/archive/master.zip
 
-RUN git clone https://github.com/dpifke/pifkoin
+ENV VERSION=0.1
+RUN  pip3 install https://github.com/dpifke/pifkoin/archive/master.zip
 
 # RUN git clone https://github.com/reddcoin-project/SocialTipBot
-
-#RUN ln -s /root/pifkoin/python /root/SocialTipBot/src/pifkoin
 
 WORKDIR /root/SocialTipBot/src
 
