@@ -59,7 +59,7 @@ services:
     links:
       - reddcoin-mysql:reddcoin-mysql
     volumes:
-      - "./SocialTipBot:/root/SocialTipBot"
+      - "/root/SocialTipBot:/root/SocialTipBot"
       - "./.reddcoin:/root/.reddcoin"
 
   reddcoin-reddittipbot:
@@ -74,5 +74,5 @@ services:
     links:
       - reddcoin-mysql:reddcoin-mysql
     volumes:
-      - "./RedditTipBot:/root/RedditTipBot"
+      - "/root/SocialTipBot:/root/SocialTipBot"
       - "./.reddcoin:/root/.reddcoin"
