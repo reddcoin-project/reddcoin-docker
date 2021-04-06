@@ -76,3 +76,20 @@ services:
     volumes:
       - "/root/SocialTipBot:/root/SocialTipBot"
       - "./.reddcoin:/root/.reddcoin"
+
+  reddcoin-twitchtipbot:
+    container_name: reddcoin-twitchtipbot
+    image: reddcoin-twitchtipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/twitch/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      - SITE: twitch
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "/root/SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
