@@ -29,7 +29,7 @@ RUN pip3 install \
     mysqlclient==1.4.6 \
     praw==7.2.0 \
     PyYAML==5.3 \
-    Jinja2==2.10.3
+    Jinja2==2.10.3 \
     SQLAlchemy==1.3.12
 
 RUN pip3 install https://github.com/reddcoin-project/python-twitter-webhooks/archive/master.zip
