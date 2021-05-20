@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04 as builder
 LABEL maintainer="info@reddcoin.com"
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,3 +23,17 @@ RUN ./autogen.sh && ./configure --without-gui
 
 RUN make
 RUN make install
+
+FROM ubuntu:14.04
+LABEL maintainer="info@reddcoin.com"
+
+RUN apt-get update \
+    && apt-get install -y git software-properties-common \
+    && add-apt-repository ppa:bitcoin/bitcoin \
+    && apt-get update \
+    && apt-get install -y libboost-all-dev libdb4.8-dev libdb4.8++-dev miniupnpc \
+    && apt-get purge -y software-properties-common \
+    && apt-get autoremove --yes \
+    && apt-get clean --yes
+
+COPY --from=builder /usr/local/bin/* /usr/local/bin/
