@@ -1,0 +1,8 @@
+requests
+beautifulsoup4
+pyqrcode
+Image
+pypng
+emoji
+apscheduler
+python-telegram-bot==12.0.0b1 

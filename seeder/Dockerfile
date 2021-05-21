@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:stretch-slim as builder
 LABEL maintainer="info@reddcoin.com"
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -9,13 +9,14 @@ WORKDIR /src
 RUN git clone https://github.com/reddcoin-project/reddcoin-seeder.git
 
 RUN cd ./reddcoin-seeder && make
-RUN mv ./reddcoin-seeder/dnsseed /usr/local/bin
-RUN rm -rf reddcoin-seeder
 
-# Cleanup Build Packages
-RUN apt-get remove -y \
-  build-essential libboost-all-dev libssl-dev
-RUN apt-get autoremove -y
+FROM debian:stretch-slim
+LABEL maintainer="info@reddcoin.com"
+RUN apt-get update && apt-get install -y openssl \
+    && apt -y autoremove \
+    && apt -y clean
+
+COPY --from=builder /src/reddcoin-seeder/dnsseed /usr/local/bin
 
 EXPOSE 53/udp
 
