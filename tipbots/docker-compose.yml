@@ -1,0 +1,102 @@
+version: "3.6"
+services:
+
+  reddcoin-server:
+    container_name: reddcoin-server
+    image: reddcoincore/server:latest
+    build: ./server
+    ports: 
+      - "45443:45443"
+      - "45444:45444"
+# Use custom volume for data
+#    volumes:
+#      - "./.reddcoin:/root/.reddcoin"
+# Inject Bootstrap for faster Startup
+#      - "./bootstrap:/root/bootstrap"
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=45443
+      - RPC_ALLOW_IP=0.0.0.0/0
+
+  reddcoin-mysql:
+    container_name: reddcoin-mysql
+    image: mysql/mysql-server:latest
+#    ports:
+#      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: r3ddcoint1pb0t
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - "./dbdata:/var/lib/mysql/"
+
+  reddcoin-twittertipbot:
+    container_name: reddcoin-twittertipbot
+    image: reddcoin-twittertipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/twitter/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "/root/SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
+
+  reddcoin-reddittipbot:
+    container_name: reddcoin-reddittipbot
+    image: reddcoin-reddittipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/reddit/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "/root/SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
+
+  reddcoin-twitchtipbot:
+    container_name: reddcoin-twitchtipbot
+    image: reddcoin-twitchtipbot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/twitch/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    entrypoint: ["python3", "./run.py", "twitch"]
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    volumes:
+      - "~/Projects/tipbot/SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
+
+  reddcoin-tipbotapi:
+    container_name: reddcoin-tipbotapi
+    image: reddcoin-tipbotapi
+    restart: always
+    build:
+      context: .
+      dockerfile: ./tipbots/api/Dockerfile
+    ports:
+      - "127.0.0.1:4567:4567"
+    links:
+      - reddcoin-mysql:reddcoin-mysql
+    depends_on:
+      - reddcoin-server
+      - reddcoin-memcached
+      - reddcoin-mysql
+    volumes:
+      - "~/Projects/tipbot/SocialTipBot:/root/SocialTipBot"
+      - "./.reddcoin:/root/.reddcoin"
+
+
+  reddcoin-memcached:
+    container_name: reddcoin-memcached
+    image: memcached:latest
