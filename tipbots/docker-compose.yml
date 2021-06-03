@@ -40,6 +40,7 @@ services:
       dockerfile: ./tipbots/twitter/Dockerfile
     ports:
       - "127.0.0.1:3000:3000"
+    entrypoint: ["python3", "./run.py", "twitter"]
     links:
       - reddcoin-mysql:reddcoin-mysql
     volumes:
@@ -55,6 +56,7 @@ services:
       dockerfile: ./tipbots/reddit/Dockerfile
     ports:
       - "127.0.0.1:3000:3000"
+    entrypoint: ["python3", "./run.py", "reddit"]
     links:
       - reddcoin-mysql:reddcoin-mysql
     volumes:
