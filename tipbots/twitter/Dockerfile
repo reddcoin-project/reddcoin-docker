@@ -33,6 +33,7 @@ RUN pip3 install \
     SQLAlchemy==1.3.12
 
 RUN pip3 install https://github.com/reddcoin-project/python-twitter-webhooks/archive/master.zip
+RUN pip3 install https://github.com/reddcoin-project/python-reddcoinrpc/archive/master.zip
 RUN pip3 install https://github.com/ryanmcgrath/twython/archive/master.zip
 
 ENV VERSION=0.1
