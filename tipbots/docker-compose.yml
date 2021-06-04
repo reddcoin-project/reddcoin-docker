@@ -102,3 +102,14 @@ services:
   reddcoin-memcached:
     container_name: reddcoin-memcached
     image: memcached:latest
+
+  reddcoin-reverse:
+    container_name: reddcoin-reverse
+    hostname: reddcoin-reverse
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./tipbots/nginx/:/etc/nginx
+      - ./tipbots/nginx/certs/:/etc/ssl/private
