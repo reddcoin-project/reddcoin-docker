@@ -36,8 +36,6 @@ RUN pip3 install https://github.com/reddcoin-project/python-twitter-webhooks/arc
 RUN pip3 install https://github.com/reddcoin-project/python-reddcoinrpc/archive/master.zip
 RUN pip3 install https://github.com/ryanmcgrath/twython/archive/master.zip
 
-ENV VERSION=0.1
-RUN  pip3 install https://github.com/dpifke/pifkoin/archive/master.zip
 
 # RUN git clone https://github.com/reddcoin-project/SocialTipBot
 
