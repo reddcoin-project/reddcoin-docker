@@ -29,6 +29,7 @@ RUN pip3 install \
     mysqlclient==1.4.6 \
     praw==7.2.0 \
     PyYAML==5.3 \
+    flask==1.1.1 \
     Jinja2==2.10.3 \
     SQLAlchemy==1.3.12
 
