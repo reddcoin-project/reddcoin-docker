@@ -71,3 +71,22 @@ services:
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
+
+  reddcoin-electrumx:
+    container_name: reddcoin-electrumx
+    image: reddcoin-electrumx
+    build:
+      context: ./docker-electrumx
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./electrumx-data:/data
+    environment:
+      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server
+      - COIN=ReddcoinTestnet
+      - NET=testnet
+      - COST_HARD_LIMIT=100000
+    ports:
+      - 0.0.0.0:51002:50002
+    links:
+      - reddcoin-server1
