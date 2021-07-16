@@ -8,11 +8,11 @@ services:
     image: reddcoincore/server:latest
     restart: always
     build:
-      context: .
-      dockerfile: ./server/Dockerfile-testnet
-    ports:
-#      - "55443:55443" #we dont need rpc out here
-      - "55444:55444"
+      context: ./server
+      dockerfile: ./Dockerfile-testnet
+#    ports:
+#      - "55443:55443"
+#      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin1:/root/.reddcoin"
@@ -30,10 +30,12 @@ services:
     container_name: reddcoin-server2
     image: reddcoincore/server:latest
     restart: always
-    build: ./server
-    ports:
-      #      - "55443:55443" #we dont need rpc out here
-      - "55444:55444"
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile-testnet
+#    ports:
+#      - "55443:55443"
+#      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin2:/root/.reddcoin"
@@ -51,10 +53,12 @@ services:
     container_name: reddcoin-server3
     image: reddcoincore/server:latest
     restart: always
-    build: ./server
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile-testnet
     ports:
-      #      - "55443:55443" #we dont need rpc out here
-      - "55444:55444"
+#      - "55443:55443"
+#      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin3:/root/.reddcoin"
