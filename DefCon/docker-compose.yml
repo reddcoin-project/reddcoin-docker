@@ -56,7 +56,7 @@ services:
     build:
       context: ./server
       dockerfile: ./Dockerfile-testnet
-    ports:
+#    ports:
 #      - "55443:55443"
 #      - "55444:55444"
     # Use custom volume for data
