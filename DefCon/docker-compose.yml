@@ -1,0 +1,69 @@
+version: "3.6"
+services:
+
+# Setup 3 reddcoin core testnet nodes
+
+  testnet-server-1:
+    container_name: reddcoin-server1
+    image: reddcoincore/server:latest
+    restart: always
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile-testnet
+    ports:
+#      - "55443:55443" #we dont need rpc out here
+      - "55444:55444"
+    # Use custom volume for data
+    volumes:
+      - "./.reddcoin1:/root/.reddcoin"
+    # Inject Bootstrap for faster Startup
+    #      - "./bootstrap:/root/bootstrap"
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=55443
+      - TESTNET=1
+      - RPC_ALLOW_IP=0.0.0.0/0
+
+  testnet-server-2:
+    container_name: reddcoin-server2
+    image: reddcoincore/server:latest
+    restart: always
+    build: ./server
+    ports:
+      #      - "55443:55443" #we dont need rpc out here
+      - "55444:55444"
+    # Use custom volume for data
+    volumes:
+      - "./.reddcoin2:/root/.reddcoin"
+    # Inject Bootstrap for faster Startup
+    #      - "./bootstrap:/root/bootstrap"
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=55443
+      - TESTNET=1
+      - RPC_ALLOW_IP=0.0.0.0/0
+
+  testnet-server-3:
+    container_name: reddcoin-server3
+    image: reddcoincore/server:latest
+    restart: always
+    build: ./server
+    ports:
+      #      - "55443:55443" #we dont need rpc out here
+      - "55444:55444"
+    # Use custom volume for data
+    volumes:
+      - "./.reddcoin3:/root/.reddcoin"
+    # Inject Bootstrap for faster Startup
+    #      - "./bootstrap:/root/bootstrap"
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=username
+      - RPC_PASSWORD=password
+      - RPC_PORT=55443
+      - TESTNET=1
+      - RPC_ALLOW_IP=0.0.0.0/0
