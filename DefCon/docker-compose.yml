@@ -82,7 +82,7 @@ services:
     volumes:
       - ./electrumx-data:/data
     environment:
-      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server
+      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server1
       - COIN=ReddcoinTestnet
       - NET=testnet
       - COST_HARD_LIMIT=100000
