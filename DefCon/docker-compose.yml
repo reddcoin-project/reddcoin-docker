@@ -3,16 +3,16 @@ services:
 
 # Setup 3 reddcoin core testnet nodes
 
-  reddcoin-server1:
+  testnet-server-1:
     container_name: reddcoin-server1
     image: reddcoincore/server:latest
     restart: always
     build:
       context: ./server
       dockerfile: ./Dockerfile-testnet
-#    ports:
-#      - "55443:55443"
-#      - "55444:55444"
+    ports:
+      #      - "55443:55443"
+      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin1:/root/.reddcoin"
@@ -26,16 +26,16 @@ services:
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
 
-  reddcoin-server2:
+  testnet-server-2:
     container_name: reddcoin-server2
     image: reddcoincore/server:latest
     restart: always
     build:
       context: ./server
       dockerfile: ./Dockerfile-testnet
-#    ports:
-#      - "55443:55443"
-#      - "55444:55444"
+    #    ports:
+    #      - "55443:55443"
+    #      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin2:/root/.reddcoin"
@@ -49,16 +49,16 @@ services:
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
 
-  reddcoin-server3:
+  testnet-server-3:
     container_name: reddcoin-server3
     image: reddcoincore/server:latest
     restart: always
     build:
       context: ./server
       dockerfile: ./Dockerfile-testnet
-#    ports:
-#      - "55443:55443"
-#      - "55444:55444"
+    #    ports:
+    #      - "55443:55443"
+    #      - "55444:55444"
     # Use custom volume for data
     volumes:
       - "./.reddcoin3:/root/.reddcoin"
@@ -82,11 +82,28 @@ services:
     volumes:
       - ./electrumx-data:/data
     environment:
-      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server1
+      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@testnet-server-1
       - COIN=ReddcoinTestnet
       - NET=testnet
       - COST_HARD_LIMIT=100000
     ports:
       - 0.0.0.0:51002:50002
-    links:
-      - reddcoin-server1
+    depends_on:
+      - testnet-server-1
+
+  reddcoin-blockstore:
+    container_name: reddcoin-blockstore
+    image: reddcoin-blockstore
+    restart: always
+    build:
+      context: ./reddstack/blockstore
+      dockerfile: ./Dockerfile
+#    ports:
+#      - "127.0.0.1:6264:6264"
+    depends_on:
+      - testnet-server-2
+    volumes:
+      - "./.blockstore:/root/.blockstore"
+    environment:
+      - BLOCKSTACK_TESTNET=1
+      - BLOCKSTACK_DEBUG=1
