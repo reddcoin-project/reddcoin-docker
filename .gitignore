@@ -1,3 +1,9 @@
 /.reddcoin/
+/.reddcoin1/
+/.reddcoin2/
+/.reddcoin3/
+/electrumx-data/
 /.idea/
 /dbdata/
+/.reddcoin-testnet/
+/.blockstore/
