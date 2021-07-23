@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /blockstore/bin/blockstore start --foreground
+exec ./bin/blockstored start --foreground

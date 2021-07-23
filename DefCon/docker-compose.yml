@@ -3,7 +3,7 @@ services:
 
 # Setup 3 reddcoin core testnet nodes
 
-  testnet-server-1:
+  reddcoin-server1:
     container_name: reddcoin-server1
     image: reddcoincore/server:latest
     restart: always
@@ -26,7 +26,7 @@ services:
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
 
-  testnet-server-2:
+  reddcoin-server2:
     container_name: reddcoin-server2
     image: reddcoincore/server:latest
     restart: always
@@ -49,7 +49,7 @@ services:
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
 
-  testnet-server-3:
+  reddcoin-server3:
     container_name: reddcoin-server3
     image: reddcoincore/server:latest
     restart: always
@@ -82,14 +82,14 @@ services:
     volumes:
       - ./electrumx-data:/data
     environment:
-      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@testnet-server-1
+      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server1
       - COIN=ReddcoinTestnet
       - NET=testnet
       - COST_HARD_LIMIT=100000
     ports:
       - 0.0.0.0:51002:50002
     depends_on:
-      - testnet-server-1
+      - reddcoin-server1
 
   reddcoin-blockstore:
     container_name: reddcoin-blockstore
@@ -101,7 +101,7 @@ services:
 #    ports:
 #      - "127.0.0.1:6264:6264"
     depends_on:
-      - testnet-server-2
+      - reddcoin-server3
     volumes:
       - "./.blockstore:/root/.blockstore"
     environment:

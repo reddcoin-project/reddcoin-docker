@@ -25,7 +25,7 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     pip install -r requirements.txt && \
     rm -rf /tmp/*
 
-WORKDIR /reddstack
+WORKDIR /root/reddstack
 
 EXPOSE 6264
 
