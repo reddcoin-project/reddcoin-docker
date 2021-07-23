@@ -104,6 +104,24 @@ services:
       - reddcoin-server3
     volumes:
       - "./.blockstore:/root/.blockstore"
+      - "./.reddstore-client:/root/.reddstore-client"
+    environment:
+      - BLOCKSTACK_TESTNET=1
+      - BLOCKSTACK_DEBUG=1
+
+  reddcoin-reddstack-rest:
+    container_name: reddcoin-reddstack-rest
+    image: reddcoin-reddstack-rest
+    restart: always
+    build:
+      context: ./reddstack/reddstack-rest
+      dockerfile: ./Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - reddcoin-blockstore
+    volumes:
+      - "./.reddstore-client:/root/.reddstore-client"
     environment:
       - BLOCKSTACK_TESTNET=1
       - BLOCKSTACK_DEBUG=1
