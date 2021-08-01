@@ -17,7 +17,7 @@ services:
     volumes:
       - "./.reddcoin1:/root/.reddcoin"
     # Inject Bootstrap for faster Startup
-    #      - "./bootstrap:/root/bootstrap"
+      - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
       - RPC_USERNAME=username
@@ -40,7 +40,7 @@ services:
     volumes:
       - "./.reddcoin2:/root/.reddcoin"
     # Inject Bootstrap for faster Startup
-    #      - "./bootstrap:/root/bootstrap"
+      - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
       - RPC_USERNAME=username
@@ -63,7 +63,7 @@ services:
     volumes:
       - "./.reddcoin3:/root/.reddcoin"
     # Inject Bootstrap for faster Startup
-    #      - "./bootstrap:/root/bootstrap"
+      - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
       - RPC_USERNAME=username
