@@ -20,8 +20,8 @@ services:
       - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
-      - RPC_USERNAME=username
-      - RPC_PASSWORD=password
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
@@ -44,8 +44,8 @@ services:
       - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
-      - RPC_USERNAME=username
-      - RPC_PASSWORD=password
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
@@ -68,8 +68,8 @@ services:
       - "./bootstrap:/root/bootstrap"
     environment:
       - RPC_SERVER=1
-      - RPC_USERNAME=username
-      - RPC_PASSWORD=password
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
