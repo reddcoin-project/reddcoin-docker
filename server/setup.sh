@@ -13,8 +13,8 @@ else
   echo "$CONFIG_PATH is already existent..."
 fi
 
-if [ -f "../bootstrap/"$BOOTSTRAP ]; then
-  echo "Found ../bootstrap/$BOOTSTRAP"
+if [ -f "/root/bootstrap/"$BOOTSTRAP ]; then
+  echo "Found /root/bootstrap/$BOOTSTRAP"
   echo "Which network are we targeting?"
   if [[ $TESTNET == 0 ]]; then
     echo "Pointing to MAINNET"
@@ -36,7 +36,7 @@ if [ -f "../bootstrap/"$BOOTSTRAP ]; then
     fi
   fi
 else
-  echo "Could not find ../bootstrap/$BOOTSTRAP"
+  echo "Could not find /root/bootstrap/$BOOTSTRAP"
 fi
 
 [ -f "/root/.reddcoin/.lock" ] && rm -f /root/.reddcoin/.lock
