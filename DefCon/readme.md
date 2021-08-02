@@ -133,18 +133,21 @@ Server1
 ```shell
 echo addnode=reddcoin-server2 >> .reddcoin1/reddcoin.conf
 echo addnode=reddcoin-server3 >> .reddcoin1/reddcoin.conf
+echo rpcthreads=50 >> .reddcoin1/reddcoin.conf
 ```
 
 Server2
 ```shell
-echo addnode=reddcoin-server1 >> .reddcoin1/reddcoin.conf
-echo addnode=reddcoin-server3 >> .reddcoin1/reddcoin.conf
+echo addnode=reddcoin-server1 >> .reddcoin2/reddcoin.conf
+echo addnode=reddcoin-server3 >> .reddcoin2/reddcoin.conf
+echo rpcthreads=50 >> .reddcoin2/reddcoin.conf
 ```
 
 Server3
 ```shell
 echo addnode=reddcoin-server1 >> .reddcoin1/reddcoin.conf
 echo addnode=reddcoin-server2 >> .reddcoin1/reddcoin.conf
+echo rpcthreads=50 >> .reddcoin3/reddcoin.conf
 ```
 
 Now start all servers and run them in the background
@@ -166,7 +169,69 @@ The repository should have already been cloned from an [earlier step](#Docker-fi
 This will pull the necessary images to the local container and start the electrumx service
 
 ```shell
-docker-compose up reddcoin-electrumx
+docker-compose up -d reddcoin-electrumx
 ```
 
+The electrum service will take some time to synchronise. You can check on progress using:
 
+```shell
+docker-compose logs -f --tail=50 reddcoin-electrumx
+```
+
+#### Blockstore
+
+##### Pre-requisites:
+
+1. Download the testnet bootstrap
+
+```shell
+cd ./bootstrap
+wget https://download.reddcoin.com/bin/bootstrap/testnet-blockstore-Aug-02-2021.zip
+```
+
+2. Start the blockstore service (firstly in the foreground)   
+   This will pull the necessary images to the local container and start the blockstore service
+
+```shell
+docker-compose up reddcoin-blockstore
+```
+
+If it is running without error, then stop it with *ctrl+c*  
+and restart in daemon mode
+
+```shell
+docker-compose up -d reddcoin-blockstore
+```
+
+The blockstore service will take some time to catchup and synchronise. You can check on progress using:
+
+```shell
+docker-compose logs -f --tail=50 reddcoin-blockstore
+```
+
+#### Rest API
+
+Finally the reddcoin-reddstack-rest service can be started with 
+
+```shell
+docker-compose up reddcoin-reddstack-rest
+```
+
+If it is running without error, then stop it with *ctrl+c*  
+and restart in daemon mode
+
+```shell
+docker-compose up -d reddcoin-reddstack-rest
+```
+
+From a browser or using curl Check you can reach the service:
+
+```shell
+curl http://147.182.207.160:8082/
+```
+
+the correct response will be
+
+```shell
+{"msg": "this is root"}
+```
