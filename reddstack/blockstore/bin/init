@@ -1,33 +1,47 @@
 #!/bin/sh
 set -ex
-CONFIG_PATH=/root/.blockstore/testnet/blockstore.ini
-if [ ! -f $CONFIG_PATH ]; then
-  echo "[bitcoind]" >> $CONFIG_PATH
-  echo "mock = False" >> $CONFIG_PATH
-  echo "passwd = $RPC_PASSWORD" >> $CONFIG_PATH
-  echo "server = $RPC_SERVERNAME" >> $CONFIG_PATH
-  echo "user = $RPC_USERNAME" >> $CONFIG_PATH
-  echo "timeout = 300" >> $CONFIG_PATH
-  echo "port = $RPC_PORT" >> $CONFIG_PATH
-  echo "use_https = False" >> $CONFIG_PATH
-  echo " "  >> $CONFIG_PATH
+CONFIG_PATH1=/root/.blockstore/testnet/blockstore.ini
+if [ ! -f $CONFIG_PATH1 ]; then
+  echo "[bitcoind]" >> $CONFIG_PATH1
+  echo "mock = False" >> $CONFIG_PATH1
+  echo "passwd = $RPC_PASSWORD" >> $CONFIG_PATH1
+  echo "server = $RPC_SERVERNAME" >> $CONFIG_PATH1
+  echo "user = $RPC_USERNAME" >> $CONFIG_PATH1
+  echo "timeout = 300" >> $CONFIG_PATH1
+  echo "port = $RPC_PORT" >> $CONFIG_PATH1
+  echo "use_https = False" >> $CONFIG_PATH1
+  echo " "  >> $CONFIG_PATH1
 
-  echo "[reddcoin_com]" >> $CONFIG_PATH
-  echo " "  >> $CONFIG_PATH
+  echo "[reddcoin_com]" >> $CONFIG_PATH1
+  echo " "  >> $CONFIG_PATH1
 
-  echo "[dht]" >> $CONFIG_PATH
-  echo "disable = True" >> $CONFIG_PATH
-  echo "port = 6265" >> $CONFIG_PATH
-  echo "servers = dht.blockstack.org:6265,dht.onename.com:6265,dht.halfmoonlabs.com:6265,127.0.0.1:6265" >> $CONFIG_PATH
-  echo " "  >> $CONFIG_PATH
+  echo "[dht]" >> $CONFIG_PATH1
+  echo "disable = True" >> $CONFIG_PATH1
+  echo "port = 6265" >> $CONFIG_PATH1
+  echo "servers = dht.blockstack.org:6265,dht.onename.com:6265,dht.halfmoonlabs.com:6265,127.0.0.1:6265" >> $CONFIG_PATH1
+  echo " "  >> $CONFIG_PATH1
 
-  echo "[blockstore]" >> $CONFIG_PATH
-  echo "announcers = judecn.id,muneeb.id,shea256.id" >> $CONFIG_PATH
-  echo "testset = False" >> $CONFIG_PATH
-  echo "max_subsidy = 0" >> $CONFIG_PATH
-  echo "email =" >> $CONFIG_PATH
+  echo "[blockstore]" >> $CONFIG_PATH1
+  echo "announcers = judecn.id,muneeb.id,shea256.id" >> $CONFIG_PATH1
+  echo "testset = False" >> $CONFIG_PATH1
+  echo "max_subsidy = 0" >> $CONFIG_PATH1
+  echo "email =" >> $CONFIG_PATH1
 else
-  echo "$CONFIG_PATH is already existent..."
+  echo "$CONFIG_PATH1 is already existent..."
+fi
+
+CONFIG_PATH2=/root/.reddstore-client/reddstore-client.ini
+if [ ! -f $CONFIG_PATH2 ]; then
+
+  echo "[blockstore-client]" >> $CONFIG_PATH2
+  echo "server = reddcoin-blockstore" >> $CONFIG_PATH2
+  echo "port = 6264" >> $CONFIG_PATH2
+  echo "metadata = /root/.reddstore-client/metadata" >> $CONFIG_PATH2
+  echo "storage_drivers = disk" >> $CONFIG_PATH2
+  echo "blockchain_headers = /root/.reddstore-client/blockchain-headers.dat" >> $CONFIG_PATH2
+  echo "advanced_mode = on" >> $CONFIG_PATH2 
+else
+  echo "$CONFIG_PATH2 is already existent..."
 fi
 
 if [ -f "/root/bootstrap/"$BOOTSTRAP ]; then
