@@ -1,6 +1,10 @@
 #!/bin/sh
 set -ex
 CONFIG_PATH1=/root/.blockstore/testnet/blockstore.ini
+if [ ! -d "/root/.blockstore/testnet" ];then
+  mkdir -p "/root/.blockstore/testnet"
+fi
+
 if [ ! -f $CONFIG_PATH1 ]; then
   echo "[bitcoind]" >> $CONFIG_PATH1
   echo "mock = False" >> $CONFIG_PATH1
