@@ -2,27 +2,30 @@
 set -ex
 CONFIG_PATH=/root/.blockstore/testnet/blockstore.ini
 if [ ! -f $CONFIG_PATH ]; then
-  echo "[bitcoind]"
-  echo "mock = False"
-  echo "passwd = $RPC_PASSWORD"
-  echo "server = $RPC_SERVERNAME"
-  echo "user = $RPC_USERNAME"
-  echo "timeout = 300"
-  echo "port = $RPC_PORT"
-  echo "use_https = False"
+  echo "[bitcoind]" >> $CONFIG_PATH
+  echo "mock = False" >> $CONFIG_PATH
+  echo "passwd = $RPC_PASSWORD" >> $CONFIG_PATH
+  echo "server = $RPC_SERVERNAME" >> $CONFIG_PATH
+  echo "user = $RPC_USERNAME" >> $CONFIG_PATH
+  echo "timeout = 300" >> $CONFIG_PATH
+  echo "port = $RPC_PORT" >> $CONFIG_PATH
+  echo "use_https = False" >> $CONFIG_PATH
+  echo " "  >> $CONFIG_PATH
 
-  echo "[reddcoin_com]"
+  echo "[reddcoin_com]" >> $CONFIG_PATH
+  echo " "  >> $CONFIG_PATH
 
-  echo "[dht]"
-  echo "disable = True"
-  echo "port = 6265"
-  echo "servers = dht.blockstack.org:6265,dht.onename.com:6265,dht.halfmoonlabs.com:6265,127.0.0.1:6265"
+  echo "[dht]" >> $CONFIG_PATH
+  echo "disable = True" >> $CONFIG_PATH
+  echo "port = 6265" >> $CONFIG_PATH
+  echo "servers = dht.blockstack.org:6265,dht.onename.com:6265,dht.halfmoonlabs.com:6265,127.0.0.1:6265" >> $CONFIG_PATH
+  echo " "  >> $CONFIG_PATH
 
-  echo "[blockstore]"
-  echo "announcers = judecn.id,muneeb.id,shea256.id"
-  echo "testset = False"
-  echo "max_subsidy = 0"
-  echo "email ="
+  echo "[blockstore]" >> $CONFIG_PATH
+  echo "announcers = judecn.id,muneeb.id,shea256.id" >> $CONFIG_PATH
+  echo "testset = False" >> $CONFIG_PATH
+  echo "max_subsidy = 0" >> $CONFIG_PATH
+  echo "email =" >> $CONFIG_PATH
 else
   echo "$CONFIG_PATH is already existent..."
 fi
