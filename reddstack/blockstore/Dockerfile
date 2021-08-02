@@ -10,7 +10,7 @@ WORKDIR /root
 RUN apt-get update
 RUN apt-get install -y git software-properties-common wget unzip
 
-RUN mkdir -p /root/.blockstore/testnet
+RUN mkdir -p /root/.blockstore /root/.blockstore/testnet
 
 RUN VERSION=$(cat /tmp/VERSION) && \
     chmod a+x /usr/local/bin/* && \
