@@ -1,6 +1,6 @@
-#Building DefCon
+# Building DefCon
 
-##Setup
+## Setup
 
 ### Docker and Docker Compose
 
