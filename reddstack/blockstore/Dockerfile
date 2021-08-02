@@ -10,6 +10,8 @@ WORKDIR /root
 RUN apt-get update
 RUN apt-get install -y git software-properties-common wget unzip
 
+RUN mkdir -p /root/.blockstore/testnet
+
 RUN VERSION=$(cat /tmp/VERSION) && \
     chmod a+x /usr/local/bin/* && \
     git clone https://github.com/reddcoin-project/pyreddcointools.git && \

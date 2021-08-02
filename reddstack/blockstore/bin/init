@@ -39,7 +39,7 @@ if [ ! -f $CONFIG_PATH2 ]; then
   echo "metadata = /root/.reddstore-client/metadata" >> $CONFIG_PATH2
   echo "storage_drivers = disk" >> $CONFIG_PATH2
   echo "blockchain_headers = /root/.reddstore-client/blockchain-headers.dat" >> $CONFIG_PATH2
-  echo "advanced_mode = on" >> $CONFIG_PATH2 
+  echo "advanced_mode = on" >> $CONFIG_PATH2
 else
   echo "$CONFIG_PATH2 is already existent..."
 fi
