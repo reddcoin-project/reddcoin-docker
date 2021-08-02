@@ -25,6 +25,7 @@ services:
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
+      - BOOTSTRAP=testnet-blockchain-Jul-16-2021.zip
 
   reddcoin-server2:
     container_name: reddcoin-server2
@@ -48,6 +49,7 @@ services:
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
+      - BOOTSTRAP=testnet-blockchain-Jul-16-2021.zip
 
   reddcoin-server3:
     container_name: reddcoin-server3
@@ -71,6 +73,7 @@ services:
       - RPC_PORT=55443
       - TESTNET=1
       - RPC_ALLOW_IP=0.0.0.0/0
+      - BOOTSTRAP=testnet-blockchain-Jul-16-2021.zip
 
   reddcoin-electrumx:
     container_name: reddcoin-electrumx
