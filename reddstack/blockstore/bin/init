@@ -58,8 +58,8 @@ if [ -f "/root/bootstrap/"$BOOTSTRAP ]; then
     fi
   elif [[ $BLOCKSTACK_TESTNET == 1 ]]; then
     echo "Pointing to TESTNET"
-    if [ -d "/root/.reddcoin/testnet3/blocks" ]; then
-      echo "Skipping Bootstrap file cause of already existent blocks in /root/.reddcoin/testnet3"
+    if [ -f "/root/.blockstore/testnet/blockstore.db" ]; then
+      echo "Skipping Bootstrap file cause of already existent blocks in /root/.blockstore/testnet"
     else
       cd /root/.blockstore/testnet && rm blockstore.db blockstore.lastblock blockstore.snapshots
       apt-get update && apt-get install -y unzip
