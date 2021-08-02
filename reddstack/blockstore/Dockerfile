@@ -25,6 +25,12 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     pip install -r requirements.txt && \
     rm -rf /tmp/*
 
+ENV BLOCKSTACK_TESTNET=0
+ENV BLOCKSTACK_DEBUG=0
+ENV RPC_USERNAME rpcusername
+ENV RPC_PASSWORD rpcpassword
+ENV RPC_PORT 45443
+
 WORKDIR /root/reddstack
 
 EXPOSE 6264

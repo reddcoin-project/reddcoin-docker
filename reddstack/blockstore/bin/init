@@ -1,3 +1,56 @@
 #!/bin/sh
+set -ex
+CONFIG_PATH=/root/.blockstore/testnet/blockstore.ini
+if [ ! -f $CONFIG_PATH ]; then
+  echo "[bitcoind]"
+  echo "mock = False"
+  echo "passwd = $RPC_PASSWORD"
+  echo "server = $RPC_SERVERNAME"
+  echo "user = $RPC_USERNAME"
+  echo "timeout = 300"
+  echo "port = $RPC_PORT"
+  echo "use_https = False"
+
+  echo "[reddcoin_com]"
+
+  echo "[dht]"
+  echo "disable = True"
+  echo "port = 6265"
+  echo "servers = dht.blockstack.org:6265,dht.onename.com:6265,dht.halfmoonlabs.com:6265,127.0.0.1:6265"
+
+  echo "[blockstore]"
+  echo "announcers = judecn.id,muneeb.id,shea256.id"
+  echo "testset = False"
+  echo "max_subsidy = 0"
+  echo "email ="
+else
+  echo "$CONFIG_PATH is already existent..."
+fi
+
+if [ -f "/root/bootstrap/"$BOOTSTRAP ]; then
+  echo "Found /root/bootstrap/$BOOTSTRAP"
+  echo "Which network are we targeting?"
+  if [[ $BLOCKSTACK_TESTNET == 0 ]]; then
+    echo "Pointing to MAINNET"
+    if [ -f "/root/.blockstore/blockstore.db" ]; then
+      echo "Skipping Bootstrap file cause of already existent content in /root/.blockstore"
+    else
+      cd /root/.blockstore && rm blockstore.db blockstore.lastblock blockstore.snapshots
+      apt-get update && apt-get install -y unzip
+      unzip /root/bootstrap/$BOOTSTRAP -d /root/.blockstore
+    fi
+  elif [[ $BLOCKSTACK_TESTNET == 1 ]]; then
+    echo "Pointing to TESTNET"
+    if [ -d "/root/.reddcoin/testnet3/blocks" ]; then
+      echo "Skipping Bootstrap file cause of already existent blocks in /root/.reddcoin/testnet3"
+    else
+      cd /root/.blockstore/testnet && rm blockstore.db blockstore.lastblock blockstore.snapshots
+      apt-get update && apt-get install -y unzip
+      unzip /root/bootstrap/$BOOTSTRAP -d /root/.blockstore/testnet
+    fi
+  fi
+else
+  echo "Could not find /root/bootstrap/$BOOTSTRAP"
+fi
 
 exec ./bin/blockstored start --foreground

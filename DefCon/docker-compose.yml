@@ -108,9 +108,15 @@ services:
     volumes:
       - "./.blockstore:/root/.blockstore"
       - "./.reddstore-client:/root/.reddstore-client"
+      # Inject Bootstrap for faster Startup
+      - "./bootstrap:/root/bootstrap"
     environment:
       - BLOCKSTACK_TESTNET=1
       - BLOCKSTACK_DEBUG=1
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
+      - RPC_PORT=55443
+      - BOOTSTRAP=testnet-blockstore-Aug-02-2021.zip
 
   reddcoin-reddstack-rest:
     container_name: reddcoin-reddstack-rest
