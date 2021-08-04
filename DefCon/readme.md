@@ -26,9 +26,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 3. Use the following command to add the 'stable' repository.
 
 ```shell
-echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
 4. Install Docker Engine.
@@ -70,7 +68,7 @@ The docker_compose.yml file in the root path will be over-written with the DefCo
 
 ```shell
 cd ./reddcoin-docker
-cp ./Defcon/docker_compose.yml ./
+cp ./DefCon/docker-compose.yml ./
 ```
 
 2. Clone other required projects from github into the root project
