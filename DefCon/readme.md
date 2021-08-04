@@ -158,7 +158,8 @@ We are using a modified docker image for testnet
 
 The repository should have already been cloned from an [earlier step](#Docker-files-for-electrumX) 
 
-1. Start the ElectrumX service (firstly in the foreground)   
+1. Start the ElectrumX service (firstly in the foreground without the -d flag, and once installed and syncing, Ctrl-C and relaunch as below with -d flag)   
+
 This will pull the necessary images to the local container and start the electrumx service
 
 ```shell
