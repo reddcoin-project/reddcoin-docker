@@ -163,6 +163,8 @@ The repository should have already been cloned from an [earlier step](#Docker-fi
 This will pull the necessary images to the local container and start the electrumx service
 
 ```shell
+docker-compose up reddcoin-electrumx
+ctrl c
 docker-compose up -d reddcoin-electrumx
 ```
 
