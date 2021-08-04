@@ -13,7 +13,8 @@ The following is an extract of the [Official Docker Engine installation](https:/
 _Assuming host machine is linux based._
 
 1. Setup Docker repositories.
-```sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+```shell
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 
 2. Add Dockers official GPG key:
