@@ -14,6 +14,7 @@ _Assuming host machine is linux based._
 
 1. Setup Docker repositories.
 ```shell
+sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 
