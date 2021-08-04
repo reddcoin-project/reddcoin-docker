@@ -183,6 +183,7 @@ docker-compose logs -f --tail=50 reddcoin-electrumx
 ```shell
 cd ./bootstrap
 wget https://download.reddcoin.com/bin/bootstrap/testnet-blockstore-Aug-02-2021.zip
+cd ..
 ```
 
 2. Start the blockstore service (firstly in the foreground)   
