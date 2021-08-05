@@ -20,7 +20,7 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     pip install ./pyreddcoin && \
     git clone -b $VERSION https://github.com/reddcoin-project/virtualchain.git && \
     pip install ./virtualchain && \
-    git clone https://github.com/reddcoin-project/reddstack-client.git && \
+    git clone -b $VERSION https://github.com/reddcoin-project/reddstack-client.git && \
     pip install ./reddstack-client && \
     git clone -b $VERSION https://github.com/reddcoin-project/reddstack.git && \
     cd reddstack && \
