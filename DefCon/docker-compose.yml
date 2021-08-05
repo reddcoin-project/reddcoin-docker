@@ -135,3 +135,18 @@ services:
     environment:
       - BLOCKSTACK_TESTNET=1
       - BLOCKSTACK_DEBUG=1
+
+  reddcoin-insight:
+    container_name: reddcoin-insight
+    image: reddcoincore/insight:latest
+    ports:
+      - 3000:3000/tcp
+    environment:
+      - BITCOIND_HOST=reddcoin-server2
+      - BITCOIND_DATADIR=/home/reddcoin/.reddcoin/testnet3
+      - INSIGHT_NETWORK=testnet
+      - BITCOIND_USER=reddrpc
+      - BITCOIND_PASS=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
+    volumes:
+      - "./.reddsight:/home/reddcoin/.reddsight"
+      - "./.reddcoin:/home/reddcoin/.reddcoin"
