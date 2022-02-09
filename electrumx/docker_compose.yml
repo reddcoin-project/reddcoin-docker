@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+  reddcoin-server:
+    container_name: reddcoin-server
+    image: reddcoincore/server:3.10.3
+    restart: always
+    volumes:
+      - /root/.reddcoin:/root/.reddcoin
+    environment:
+      - RPC_SERVER=1
+      - RPC_USERNAME=reddrpc
+      - RPC_PASSWORD=Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze
+      - RPC_PORT=45443
+      - RPC_ALLOW_IP=127.0.0.1/0
+    ports:
+      - 45444:45444
+
+  reddcoin-electrumx:
+    container_name: reddcoin-electrumx
+    image: lukechilds/electrumx:v1.8.7
+    restart: always
+    volumes:
+      - /root/electrumx:/data
+    environment:
+      - DAEMON_URL=http://reddrpc:Ho8vezZzgi5zRbg36bJTKmXRhEuExJDcJWLBrRdxpkze@reddcoin-server
+      - COIN=Reddcoin
+    ports:
+      - 0.0.0.0:50002:50002
+    links:
+      - reddcoin-server
