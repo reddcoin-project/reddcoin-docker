@@ -3,7 +3,7 @@ services:
 
   reddcoin-server:
     container_name: reddcoin-server
-    image: reddcoincore/server:latest
+    image: reddcoincore/server:3.10.4
     build: ./server
     ports: 
       - "45443:45443"
