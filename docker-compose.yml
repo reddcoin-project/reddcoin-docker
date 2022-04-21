@@ -3,7 +3,7 @@ services:
 
   reddcoin-server:
     container_name: reddcoin-server
-    image: reddcoincore/server:latest
+    image: reddcoincore/server:3.10.4
     build: ./server
     ports: 
       - "45443:45443"
@@ -19,6 +19,8 @@ services:
       - RPC_PASSWORD=password
       - RPC_PORT=45443
       - RPC_ALLOW_IP=0.0.0.0/0
+      - DAEMON_OPTION_PRINTTOCONSOLE=1
+      - DAEMON_OPTION_TXINDEX=0
 
   reddcoin-compiler:
     container_name: reddcoin-compiler
@@ -35,3 +37,4 @@ services:
       dockerfile: ./seeder/Dockerfile
     ports:
      - 53:53/udp
+

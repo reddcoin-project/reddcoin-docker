@@ -2,7 +2,7 @@ version: "3.3"
 services:
   reddcoin-server:
     container_name: reddcoin-server
-    image: reddcoincore/server:3.10.3
+    image: reddcoincore/server:3.10.4
     restart: always
     volumes:
       - /root/.reddcoin:/root/.reddcoin

@@ -7,8 +7,8 @@ if [ ! -f $CONFIG_PATH ]; then
   echo "rpcpassword=$RPC_PASSWORD" >> $CONFIG_PATH
   echo "rpcport=$RPC_PORT" >> $CONFIG_PATH
   echo "rpcallowip=$RPC_ALLOW_IP" >> $CONFIG_PATH
-  echo "testnet=$TESTNET" >> $CONFIG_PATH
-  echo "printtoconsole=1" >> $CONFIG_PATH
+  echo "printtoconsole=$DAEMON_OPTION_PRINTTOCONSOLE" >> $CONFIG_PATH
+  echo "txindex=$DAEMON_OPTION_TXINDEX" >> $CONFIG_PATH
 else
   echo "$CONFIG_PATH is already existent..."
 fi
